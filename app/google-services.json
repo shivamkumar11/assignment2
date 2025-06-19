@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "15439992976",
+    "firebase_url": "https://assignment2-1fa08-default-rtdb.firebaseio.com",
+    "project_id": "assignment2-1fa08",
+    "storage_bucket": "assignment2-1fa08.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15439992976:android:2afe9b22261fb192e26015",
+        "android_client_info": {
+          "package_name": "com.example.assignment2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15439992976-kuaq76si7m9vm0ntnn1gn2lv29u2otqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEo0W6c2xjoGOl44IBahJaopyBbGY1_gc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15439992976-kuaq76si7m9vm0ntnn1gn2lv29u2otqu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
