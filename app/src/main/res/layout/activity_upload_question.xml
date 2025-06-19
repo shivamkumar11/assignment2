@@ -27,7 +27,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="center|clip_vertical"
-                android:text="Add Question Detail"
+                android:text="@string/add_question_detail"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -36,7 +36,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Question">
+                android:hint="@string/enter_question">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtQuestion"
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Select Category"
+                android:text="@string/select_category"
                 android:textColor="#333"
                 android:textStyle="bold" />
 
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:hint="Or enter new category">
+                android:hint="@string/or_enter_new_category">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtNewCategory"
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:hint="Enter Answer">
+                android:hint="@string/enter_answer">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtAnswer"
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:padding="15dp"
-                android:text="UPLOAD"
+                android:text="@string/upload"
                 android:textColor="@android:color/white"
                 app:backgroundTint="@color/design_default_color_primary"
                 app:cornerRadius="12dp"

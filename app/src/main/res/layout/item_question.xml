@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/txtQuestion"
-            android:text="Sample Question?"
+            android:text="@string/sample_question"
             android:textStyle="bold"
             android:textSize="16sp"
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
 
         <TextView
             android:id="@+id/txtAnswer"
-            android:text="Answer: This is a solution"
+            android:text="@string/answer_this_is_a_solution"
             android:layout_marginTop="4dp"
             android:textSize="14sp"
             android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/txtCategory"
-            android:text="#Category"
+            android:text="@string/category"
             android:textColor="#2196F3"
             android:textStyle="bold"
             android:layout_marginTop="6dp"

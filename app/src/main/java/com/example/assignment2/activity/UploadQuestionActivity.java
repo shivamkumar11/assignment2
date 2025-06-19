@@ -1,4 +1,4 @@
-package com.example.assignment2;
+package com.example.assignment2.activity;
 
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -6,6 +6,7 @@ import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.assignment2.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
@@ -25,12 +26,12 @@ public class UploadQuestionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_question);
+        setContentView(com.example.assignment2.R.layout.activity_upload_question);
 
-        edtQuestion = findViewById(R.id.edtQuestion);
-        edtNewCategory = findViewById(R.id.edtNewCategory);
-        edtAnswer = findViewById(R.id.edtAnswer);
-        spinnerCategories = findViewById(R.id.spinnerCategories);
+        edtQuestion = findViewById(com.example.assignment2.R.id.edtQuestion);
+        edtNewCategory = findViewById(com.example.assignment2.R.id.edtNewCategory);
+        edtAnswer = findViewById(com.example.assignment2.R.id.edtAnswer);
+        spinnerCategories = findViewById(com.example.assignment2.R.id.spinnerCategories);
         btnSubmit = findViewById(R.id.btnSubmit);
 
         questionsRef = FirebaseDatabase.getInstance().getReference("questions");

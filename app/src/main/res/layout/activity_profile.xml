@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".ProfileActivity">
+    tools:context=".activity.ProfileActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/profileCard"
@@ -34,7 +34,7 @@
                 android:layout_margin="4dp"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Profile Details"
+                android:text="@string/profile_details"
                 android:textColor="#000000"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -54,7 +54,7 @@
                 android:id="@+id/textUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name: Shivam Kumar"
+                android:text="@string/name_shivam_kumar"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp"
@@ -64,7 +64,7 @@
                 android:id="@+id/textUserEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email: example@gmail.com"
+                android:text="@string/email_example_gmail_com"
                 android:textSize="16sp"
 
                 android:layout_marginBottom="12dp"

@@ -1,16 +1,13 @@
-package com.example.assignment2;
+package com.example.assignment2.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.example.assignment2.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -70,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.signInWithCredential(credential).addOnCompleteListener(this, task -> {
                 if (task.isSuccessful()) {
                     FirebaseUser user = mAuth.getCurrentUser();
+                    assert user != null;
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
                     HashMap<String, Object> map = new HashMap<>();
                     map.put("name", user.getDisplayName());

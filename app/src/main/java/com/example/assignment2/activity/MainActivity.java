@@ -1,6 +1,8 @@
-package com.example.assignment2;
+package com.example.assignment2.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,9 +12,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.assignment2.QuestionModel;
+import com.example.assignment2.R;
 import com.example.assignment2.adapters.QuestionAdapter;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,16 +45,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.example.assignment2.R.layout.activity_main);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
         mAuth = FirebaseAuth.getInstance();
-        recyclerView = findViewById(R.id.questionRecycler);
-        fab = findViewById(R.id.fabAddQuestion);
-        categorySpinner = findViewById(R.id.categorySpinner);
+        recyclerView = findViewById(com.example.assignment2.R.id.questionRecycler);
+        fab = findViewById(com.example.assignment2.R.id.fabAddQuestion);
+        categorySpinner = findViewById(com.example.assignment2.R.id.categorySpinner);
         questionsRef = FirebaseDatabase.getInstance().getReference("questions");
 
         // Toolbar
-        MaterialToolbar toolbar = findViewById(R.id.topAppBar);
+        MaterialToolbar toolbar = findViewById(com.example.assignment2.R.id.topAppBar);
         setSupportActionBar(toolbar);
 
         fab.setOnClickListener(view -> {
@@ -69,17 +77,26 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadQuestionsAndCategories() {
         questionsRef.orderByChild("timestamp").addValueEventListener(new ValueEventListener() {
-            @Override public void onDataChange(@NonNull DataSnapshot snapshot) {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 allQuestions.clear();
                 HashSet<String> categorySet = new HashSet<>();
+                List<QuestionModel> tempList = new ArrayList<>();
+
                 for (DataSnapshot snap : snapshot.getChildren()) {
                     String question = snap.child("question").getValue(String.class);
                     String category = snap.child("category").getValue(String.class);
                     String answer = snap.child("answer").getValue(String.class);
                     if (question != null && category != null) {
-                        allQuestions.add(new QuestionModel(question, category, answer));
+                        tempList.add(new QuestionModel(question, category, answer));
                         categorySet.add(category);
                     }
+                }
+
+                // Add items in reverse order so latest ones appear on top
+                for (int i = tempList.size() - 1; i >= 0; i--) {
+                    allQuestions.add(tempList.get(i));
                 }
 
                 questionAdapter.notifyDataSetChanged();
@@ -104,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
 
-            @Override public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(MainActivity.this, "Failed to load questions", Toast.LENGTH_SHORT).show();
             }
         });
@@ -134,10 +152,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.top_menu, menu);
-        loginItem = menu.findItem(R.id.action_login);
-        profileItem = menu.findItem(R.id.action_profile);
-        logoutItem = menu.findItem(R.id.action_logout);
+        getMenuInflater().inflate(com.example.assignment2.R.menu.top_menu, menu);
+        loginItem = menu.findItem(com.example.assignment2.R.id.action_login);
+        profileItem = menu.findItem(com.example.assignment2.R.id.action_profile);
+        logoutItem = menu.findItem(com.example.assignment2.R.id.action_logout);
 
         FirebaseUser user = mAuth.getCurrentUser();
         boolean loggedIn = user != null;
@@ -152,10 +170,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_login) {
+        if (id == com.example.assignment2.R.id.action_login) {
             startActivity(new Intent(this, LoginActivity.class));
             return true;
-        } else if (id == R.id.action_profile) {
+        } else if (id == com.example.assignment2.R.id.action_profile) {
             startActivity(new Intent(this, ProfileActivity.class));
             return true;
         } else if (id == R.id.action_logout) {
